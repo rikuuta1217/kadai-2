@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Season;
+use App\Models\ProductSeason;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function content(Request $request)
+    {
+        $products = Product::query();
+        $products = $products->Paginate(6);
+        return view('content',compact('products'));
+    }
+
+    public function register(Request $request)
     {
         $seasons = Season::all();
         return view('register',compact('seasons'));

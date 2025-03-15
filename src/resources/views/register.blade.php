@@ -1,7 +1,7 @@
 @extends('layouts/app')
-
+@section('title','商品登録')
 @section('content')
-<div class="content">
+<main class="content">
     <div class="content-form">
         <h2 class="content-form__title">商品登録</h2>
     </div>
@@ -93,7 +93,7 @@
             <button type="submit" class="form-btn__submit">登録</button>
         </div>
     </form>
-</div>
+</main>
 @endsection
 
 @section('script')
