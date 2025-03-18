@@ -14,6 +14,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/products',[ProductController::class,'content']);
-Route::get('/products/register',[ProductController::class,'register'])->name('products.register');
-Route::get('/',function () {return view('welcome'); });
+Route::get('/products',[ProductController::class,'content'])->name('products.content'); //商品一覧
+Route::get('/products/register',[ProductController::class,'register'])->name('products.register'); //商品登録
+// Route::get('/',function () {return view('content_detail'); });
+
+// ↓一旦/aa/仮パスで
+Route::get('/product/{productId}',[ProductController::class,'content_detail'])->name('products.content_detail'); //商品変更
+Route::put('/product/{productId}/update',[ProductController::class,'update'])->name('product.update'); //商品更新
+

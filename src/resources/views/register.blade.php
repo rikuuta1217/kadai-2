@@ -45,7 +45,7 @@
                 <img id="image-form"  class="image-form" src="" alt="画像フルーツ"style="display: none;">
             </div>
             <div class="contact-form__group--img">
-                <!-- <label for="file-upload" class="file-label" style="display: none;">ファイルを選択</label> -->
+                <label for="file-upload" class="file-label" style="display: none;">ファイルを選択</label>
                 <input type="file" id="file-upload" name="image" value="{{ old('image')}}">
             </div>
             <div class="contact-form__group--error">

@@ -28,6 +28,12 @@ class ProductController extends Controller
         return view('register',compact('seasons'));
     }
 
+    public function content_detail($id)
+    {
+        $product = Product::with('seasons')->findOrFail($id);
+        $seasons = Season::all();
+        return view('content_detail',compact('product','seasons'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -80,7 +86,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFall($id);
+        return redirect()->route('products.content');
     }
 
     /**
