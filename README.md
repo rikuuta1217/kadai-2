@@ -22,3 +22,41 @@
 ```
 
 ・.envファイルの設定
+
+  DB_HOST=mysql 
+  
+  DB_DATABASE=laravel_db  
+  
+  DB_USERNAME=laravel_user  
+  
+  DB_PASSWORD=laravel_pass 
+
+### 4.テーブルの作成
+
+```
+< $ php artisan migrate >
+```
+
+### 5.ダミーデータ作成
+
+```
+< $ php artisan db:seed >
+```
+
+### 6.アプリケーションキーの作成
+
+```
+< $ php artisan key:generate >
+```
+
+## 補足事項
+
+###権限エラー
+
+```
+< $ chmod -R 777 src/* >
+```
+
+## ER図テーブル
+
+![ER図](README.drawio.png)
