@@ -11,7 +11,7 @@
         @method('put')
         <section class="product-circle">
             <div class="product-circle__image">
-                <img id="product-image" src="{{ asset('storage/image/' . $product->image) }}" >
+                <img id="product-image" src="{{ asset('storage/' . $product->image) }}" >
                     <div class="product-file__wrapper">
                         <label class="file-label" for="file-upload" style="display:none;">ファイルを選択</label>
                         <input type="file" name="image" id="file-upload" onchange="updateImageDisplay()">
