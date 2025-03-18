@@ -52,8 +52,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['image'] = $request->file('image')->store('image','public');
+        $product = Product::create($data);
+        $product->seasons()->sync($request->season_id);
+        return redirect()->route('products.content');
     }
+
 
     /**
      * Display the specified resource.

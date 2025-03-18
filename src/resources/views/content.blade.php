@@ -34,13 +34,14 @@
     @foreach ($products as $productId)
         <div class="products-card">
             <a href="{{ route('products.content_detail', $productId->id) }}">
-                <img src="{{ asset('storage/image/' . $productId->image) }}" alt="{{ $productId->name }}">
+                <img src="{{ asset('storage/' . $productId->image) }}" alt="{{ $productId->name }}">
             </a>
             <p class="products-name">{{ $productId->name }}</p>
             <p class="products-price">{{ $productId->price }}</p>
         </div>
     @endforeach
     </div>
+{{ $products->links('pagination::bootstrap-4' )}}
 </main>
 @endsection
 
