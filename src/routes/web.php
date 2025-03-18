@@ -20,5 +20,7 @@ Route::get('/products/register',[ProductController::class,'register'])->name('pr
 
 // ↓一旦/aa/仮パスで
 Route::get('/product/{productId}',[ProductController::class,'content_detail'])->name('products.content_detail'); //商品変更
-Route::put('/product/{productId}/update',[ProductController::class,'update'])->name('product.update'); //商品更新
+Route::put('/products/{productId}/update',[ProductController::class,'update'])->name('product.update'); //商品更新
+
+
 
