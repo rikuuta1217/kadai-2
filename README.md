@@ -59,4 +59,4 @@
 
 ## ER図テーブル
 
-![ER図](src/README.drawio.svg)
+![ER図](README.drawio.png)
