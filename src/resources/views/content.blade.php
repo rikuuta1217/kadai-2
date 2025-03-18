@@ -2,7 +2,7 @@
 @section('title','商品一覧')
 @section('content')
 <main class='product-list'>
-    <div class="product-form">
+    <section class="product-form">
         <!-- 商品検索覧 -->
        <div class="product-form__title--group">
         <h2 class="product-form__title">商品一覧</h2>
@@ -23,7 +23,7 @@
             </select>
             </p>
         </div>
-    </div>
+    </section>
 
     <div class="content-create__button">
         <button type="button" class="btn-content-btn" onclick="location.href='{{ route('products.register') }}'">+ 商品を追加</button>
@@ -33,7 +33,7 @@
         <!-- 商品カード -->
     @foreach ($products as $productId)
         <div class="products-card">
-            <a href="/products/ {{ $productId->id }}">
+            <a href="{{ route('products.content_detail', $productId->id) }}">
                 <img src="{{ asset('storage/image/' . $productId->image) }}" alt="{{ $productId->name }}">
             </a>
             <p class="products-name">{{ $productId->name }}</p>
