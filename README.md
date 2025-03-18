@@ -1,6 +1,24 @@
-<h1>Mogitate</h1>
-<h2>環境設定</h2>
-<h3>Docker build</h3>
-//
-<p>1.</p>
-//
+# Mogitate
+## 環境設定
+### 1.Docker build
+
+```
+< $ docker-compose up -d --build >
+```
+### 2.laravel 設定
+
+・コンテナにログイン → パッケージをインストール
+
+```
+< $ docker-compose exec php bash >
+< $ composer install >
+```
+### 3.envファイルのコピー & 設定 
+
+・コンテナにログイン → .envファイルコピー 
+
+```
+< $ cp .env.example .env>
+```
+
+・.envファイルの設定
