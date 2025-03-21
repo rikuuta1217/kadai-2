@@ -8,7 +8,7 @@
     
     <form class="product-form" action="/products/{{ $product->id }}/update" method="post">
         @csrf
-        @method('put')
+        @method('PUT')
         <section class="product-circle">
             <div class="product-circle__image">
                 <img id="product-image" src="{{ asset('storage/' . $product->image) }}" >
@@ -71,7 +71,7 @@
 
         <div class="product-form__button">
             <button type="button" name="form-btn__cancel" onclick="location.href='{{ route('products.content') }}'">戻る</button>
-            <button type="button" name="form-btn__submit">変更を保存</button>
+            <button type="submit" name="form-btn__submit">変更を保存</button>
         </div>
     </form>
 

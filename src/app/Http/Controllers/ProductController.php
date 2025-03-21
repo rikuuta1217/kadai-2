@@ -91,8 +91,43 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFall($id);
-        return redirect()->route('products.content');
+        // プロダクトモデルからfindOrFailで送信されたフルーツの$id(Eloquent)を読み込む
+        // nullなら404を返す
+        $product = Product::findOrFail($id);
+        // バリデーションデータを取得
+        // $validateData = $request->validated();
+
+        // リクエストから'name'を取得 -> $product->name で新しい値をセット
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+
+        // 画像のアップロードと保存
+        if ($request->hasFile('image')) {
+
+            if ($product->image) {
+                Storage::delete('public/' . $product->image);
+            }
+
+            $file=$request->file('image');
+            // time()現在のタイムスタンプを取得
+            // getClientOriginalName()は、ユーザーのアップロードしたファイル名を取得
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            // 新しい画像を保存 (storage/app/public/imageにstoreで保存)
+            $filePath = $file->storeAs('public/image', $fileName);
+
+            //データベースの更新**
+            $product->image = 'image/' . $fileName;
+        }
+
+        // 季節(Season)の更新
+        $product->seasons()->sync($request->input('season_id',[]));
+
+        // データベースに保存
+        $product->save();
+
+        // フォーム送信(更新)->redirect->POST送信
+        return redirect()->route('products.content')->with('success','商品が更新されました');
     }
 
     /**
@@ -103,6 +138,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
