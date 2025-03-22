@@ -104,27 +104,22 @@ class ProductController extends Controller
 
         // 画像のアップロードと保存
         if ($request->hasFile('image')) {
-
+            dump('image');
             if ($product->image) {
-                Storage::delete('public/' . $product->image);
+                dump($product->image);
+                Storage::delete($product->image);
             }
 
-            $file=$request->file('image');
-            // time()現在のタイムスタンプを取得
-            // getClientOriginalName()は、ユーザーのアップロードしたファイル名を取得
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            // 新しい画像を保存 (storage/app/public/imageにstoreで保存)
-            $filePath = $file->storeAs('public/image', $fileName);
-
+            $product['image'] = $request->file('image')->store('image','public');
             //データベースの更新**
-            $product->image = 'image/' . $fileName;
+            dd($product);
+            Product::update($product);
+
         }
 
         // 季節(Season)の更新
-        $product->seasons()->sync($request->input('season_id',[]));
+        // $product->seasons()->sync($request->input('season_id',[]));
 
-        // データベースに保存
-        $product->save();
 
         // フォーム送信(更新)->redirect->POST送信
         return redirect()->route('products.content')->with('success','商品が更新されました');

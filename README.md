@@ -48,6 +48,18 @@
 ```
 < $ php artisan key:generate >
 ```
+## 7.シンボリックリンクの作成
+
+```
+< $ php artisan storage:link >
+```
+
+## URL(view)
+
+商品一覧：http://localhost/products
+
+商品登録：http://localhost/products/register
+
 
 ## 補足事項
 
@@ -59,4 +71,4 @@
 
 ## ER図テーブル
 
-![ER図](src/README.drawio.svg)
+![ER図](src/README.drawio.png)
