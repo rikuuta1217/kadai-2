@@ -6,7 +6,7 @@
         <a href="/products">商品一覧</a> &gt; {{ $product->name }}
     </div>
     
-    <form class="product-form" action="/products/{{ $product->id }}/update" method="post">
+    <form class="product-form" action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <section class="product-circle">
@@ -75,12 +75,48 @@
         </div>
     </form>
 
-    <form class="product-form__delete" id="form-delete" action="/products/ {{ $product->id }}" method="post">
+    <form class="product-form__delete" id="form-delete" action="/products/ {{ $product->id }}/delete" method="post" onsubmit="return confirmDelete()">
         @csrf
         @method('delete')
-            <div class="form-btn__delete" role="button">
-                <img src="{{ asset('storage/image/gomibako irasuto.jpg') }}" alt="delete-illust__icon" class="delete-icon">
-            </div>
+        <button type="submit" class="form-btn__delete">
+            <img src="{{ asset('storage/image/gomibako irasuto.jpg') }}" alt="Delete Icon" class="delete-icon">
+        </button>
     </form>
 </main>
+
+<script>
+    function updateImageDisplay() {
+        const input = document.getElementById('file-upload');
+            // ファイル選択<input type="file">を取得
+        const preview = document.getElementById('product-image');
+            // 画像を表示する<img>要素を取得
+        const fileNameDisplay = document.getElementById('file-name');
+            // 選択したファイル名を表示する<p>要素を取得
+        const hiddenInput = document.getElementById('new-upload__image');
+            // 選択した画像のファイル名を格納する<input type="hidden">を取得する
+        const file = input.files[0];
+            // ユーザーが選択したファイルを取得
+        
+        if (file) { //ファイルが選択されているかチェック
+            const reader = new FileReader();
+            // ブラウザのFileReader APIを使用してファイルを読み込む
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+            // ファイルを読み込み、img要素のsrcを変更してプレビューを更新
+            reader.readAsDataURL(file);
+            // ファイルをデータURL (Base64) として読み込む
+            fileNameDisplay.textContent = file.name;
+            // 選択したファイル名を<p>に表示
+            fileNameDisplay.style.display = "block"
+            // ファイル名の<p>を表示
+            hiddenInput.value = file.name;
+            // 選択したファイル名の名前を<input type="hidden">に保存
+        }
+    }
+
+    function confirmDelete() {
+        return confirm("本当に削除しますか？");
+    }
+</script>
 @endsection

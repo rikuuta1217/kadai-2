@@ -9,19 +9,23 @@
        </div>
         <div class="product-form__search--textbox">
             <form class="search-form" action="/products/search" method="get">
-                <input type="text" name="name" placeholder="商品名で検索">
+                <input type="text" name="name" placeholder="商品名で検索" value="{{ request('name') }}">
                 <p>
                     <button type="submit" class="search-submit" style="display">検索</button>
                 </p>
+                <label for="price-filter">価格順で表示</label>
+                <p>
+                <select id="price-filter" name="sort" onchange="this.form.submit()">
+                    <!-- name="sort" ; フォーム送信時にサーバーへ送られるパラメータ名(sortとして送信) -->
+                    <option value="">価格で並べ替え</option>
+                    <!-- value="" : 初期値。並べ替えをしない状態  -->
+                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>低い順</option>
+                    <!-- value="asc" : "asc"は昇順 (安い -> 高い) -->
+                    <!-- {{ request('sort') == 'asc' ? 'selected' : '' }} request('sort') == 'asc' -> 現在のsortが'asc'なら"selected"を追加 -->
+                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>高い順</option>
+                </select>
+                </p>
             </form>
-        </div>
-        <div class="product-form__filter--group">
-            <label for="price-filter">価格順で表示</label>
-            <p>
-            <select id="price-filter">
-                <option value="">価格で並べ替え</option>
-            </select>
-            </p>
         </div>
     </section>
 
