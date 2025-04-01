@@ -1,17 +1,20 @@
 @extends('layouts/app')
 @section('title','商品詳細')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+@endsection
 @section('content')
 <main class="product-detail">
     <div class="product-detail__title--group">
         <a href="/products">商品一覧</a> &gt; {{ $product->name }}
     </div>
-    
+
     <form class="product-form" action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <section class="product-circle">
             <div class="product-circle__image">
-                <img id="product-image" src="{{ asset('storage/' . $product->image) }}" >
+                <img id="product-image" class="product-image-preview"  src="{{ asset('storage/' . $product->image) }}" >
                     <div class="product-file__wrapper">
                         <label class="file-label" for="file-upload" style="display:none;">ファイルを選択</label>
                         <input type="file" name="image" id="file-upload" onchange="updateImageDisplay()">
@@ -57,7 +60,7 @@
                         @enderror
                     </div>
                </div>
-               <div class="product-circle__description">
+               <div class="product-description">
                 <label for="description">商品説明</label>
                     <textarea id="description" name="description" rows="4" cols="100" placeholder="商品の説明を入力">{{ $product->description }}</textarea>
                     <div class="product-circle__group--error">

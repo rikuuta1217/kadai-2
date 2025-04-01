@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Season;
 use App\Models\ProductSeason;
+
 
 class ProductController extends Controller
 {
@@ -25,6 +27,7 @@ class ProductController extends Controller
     public function register(Request $request)
     {
         $seasons = Season::all();
+
         return view('register',compact('seasons'));
     }
 
@@ -66,8 +69,18 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {   
+        // $customMessage = [
+        //     'name.required' => '商品名を入力してください。',
+        // ];
+
+        // $validated = $request->validate([
+        //     'name' => 'required | max:255',
+        // ], $customMessage);
+
+        // バリデーション済みデータを取得
+        $data = $request->validated();
         // データを取得
         $data = $request->all();
         // 画像がアップロードされたときの処理
@@ -85,7 +98,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         // プロダクトモデルからfindOrFailで送信されたフルーツの$id(Eloquent)を読み込む
         // nullなら404を返す

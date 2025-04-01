@@ -1,0 +1,129 @@
+/* メインcssリセット */
+main,div {
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+}
+/* 全体のデザイン */
+.content {
+    /* 要素を横並び */
+    display: flex;
+    /* justify-content(要素を整える) 水平要素の中央揃え*/
+    justify-content: center;
+    /* 垂直要素の中央揃え */
+    align-items: center;
+    /* 縦方向に要素を配置 */
+    flex-direction: column;
+}
+
+/* フォームのスタイル */
+.form {
+    /* フォームの横幅を設定 */
+    width: 500px;
+    /* 中要素の余幅設定(縦・横幅) */
+    padding: 20px;
+    /* フォーム要素の確認用に配色を変更 */
+    /* background: #eeeeee; */
+    border-radius: 10px;
+    /* 背景の影  (横影 縦影 影のぼかし 影の色) */
+    /* box-shadow: 0px 4px 6px rgba(0,0,0,0.1); */
+}
+
+/* 各ラベルと※必須マークの幅・レイアウト調整 */
+.contact-form__group--label {
+    /* 要素を横並び */
+    display: flex;
+    /* 垂直要素の中央揃え */
+    align-items: center;
+    /* 要素動詞の幅を調整 */
+    gap: 10px;
+    /* フォントの文字を強くする */
+    font-weight: bold;
+}
+
+/* 入力フォーム & テキストエリアのレイアウト調整 */
+.contact-form__group--input input,
+.contact-form__group--textarea textarea {
+    /* 入力フォームの幅をいっぱいに広げる */
+    width: 100%;
+    /* 入力フォーム欄の余白を設定 */
+    padding: 10px;
+    /* フォームの境界線を薄い色に設定 */
+    border: 1px solid #ccc;
+    /* フォームの角を丸くする */
+    border-radius: 5px;
+    /* フォーム内の文字サイズを調整 */
+    font-size: 15px;
+}
+
+/* 画像ファイルのアップロードデザイン */
+.contact-form__group--img  input[type="file"] {
+    /* 境界線を消す */
+    border: none;
+    /* background: #eee; */
+    /* 上下内側の余白を調整 */
+    padding: 10px;
+    /* カーソルを変更 */
+    cursor: pointer;
+}
+
+/* 季節チェックボックスのレイアウト調整 */
+.season-group__checkbox {
+    display: flex;
+    /* 左揃えでスタート */
+    justify-content: flex-start;
+    gap: 30px;
+    /* 画面幅で折り返し */
+    flex-wrap: wrap;
+    /* 左側の余白を調整 */
+    margin-left: 10px;
+}
+
+/* チェックボックスのボタンと季語の調整 */
+.season-group__checkbox label {
+    display: flex;
+    /* チェックボックスと季語の高さを合わせる */
+    align-items: center;
+    gap: 5px;
+}
+
+/* ボタン類のレイアウト調整 */
+.contact-form__button {
+    display: flex;
+    /* 水平方向のボタンを中央揃え */
+    justify-content: center;
+    /* ボタンの間隔を調整 */
+    gap: 20px;
+    /* ボタンの外側要素に余白を追加 */
+    margin-top: 20px;
+}
+
+/* 各ボタンのデザイン調整 */
+.form-btn__cancel,
+.form-btn__submit {
+    /* ボタン内側の余白を上下左右に設定 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    /* ボタンの横幅を調節 */
+    width: 150px;
+}
+
+/* 戻るボタンの配色設定 */
+.form-btn__cancel {
+    background: #ddd;
+}
+
+/* 登録ボタンの配色設定 */
+.form-btn__submit {
+    background: #ffcc00;
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+
+

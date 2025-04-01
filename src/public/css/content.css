@@ -1,0 +1,10 @@
+.content-grid {
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.products-card img {
+    width: 300px;
+}

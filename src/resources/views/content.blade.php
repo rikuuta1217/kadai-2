@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title','商品一覧')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/content.css') }}" />
+@endsection
 @section('content')
 <main class='product-list'>
     <section class="product-form">

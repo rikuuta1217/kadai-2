@@ -1,5 +1,8 @@
 @extends('layouts/app')
 @section('title','商品登録')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+@endsection
 @section('content')
 <main class="content">
     <div class="content-form">
@@ -63,7 +66,9 @@
             </div>
             <div class="season-group__checkbox">
                 @foreach ($seasons as $season)
-                <input type="checkbox" name="season_id[]" value="{{ $season->id }}"> {{ $season->name }}
+                    <label>
+                        <input type="checkbox" name="season_id[]" value="{{ $season->id }}"> {{ $season->name }}
+                    </label>
                 @endforeach
             </div>
             <div class="contact-form__group--error">
@@ -89,7 +94,7 @@
         </div>
         <!-- 登録 -->
         <div class="contact-form__button">
-            <button type="button" class="form-btn__cancel" onclick="location.href='{{ route('products.register') }}'">戻る</button>
+            <button type="button" class="form-btn__cancel" onclick="location.href='{{ route('products.content') }}'">戻る</button>
             <button type="submit" class="form-btn__submit">登録</button>
         </div>
     </form>
